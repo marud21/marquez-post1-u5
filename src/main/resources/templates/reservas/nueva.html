@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nueva Reserva</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<main>
+    <h1>Nueva Reserva</h1>
+
+    <p class="aviso error" th:if="${error}" th:text="${error}"></p>
+
+    <form class="formulario" th:action="@{/reservas}" th:object="${reserva}" method="post">
+        <label>Laboratorio
+            <select th:field="*{laboratorio.id}">
+                <option th:each="lab : ${laboratorios}" th:value="${lab.id}"
+                        th:text="${lab.nombre + ' — ' + lab.ubicacion}"></option>
+            </select>
+        </label>
+        <label>Nombre solicitante
+            <input type="text" th:field="*{nombreSolicitante}"/>
+            <span class="campo-error" th:if="${#fields.hasErrors('nombreSolicitante')}" th:errors="*{nombreSolicitante}"></span>
+        </label>
+        <label>Correo
+            <input type="email" th:field="*{correoSolicitante}"/>
+            <span class="campo-error" th:if="${#fields.hasErrors('correoSolicitante')}" th:errors="*{correoSolicitante}"></span>
+        </label>
+        <label>Inicio
+            <input type="datetime-local" th:field="*{inicio}"/>
+            <span class="campo-error" th:if="${#fields.hasErrors('inicio')}" th:errors="*{inicio}"></span>
+        </label>
+        <label>Fin
+            <input type="datetime-local" th:field="*{fin}"/>
+            <span class="campo-error" th:if="${#fields.hasErrors('fin')}" th:errors="*{fin}"></span>
+        </label>
+        <label>Motivo
+            <input type="text" th:field="*{motivo}"/>
+        </label>
+        <p class="ayuda">Horario de atención 07:00 – 21:00 · duración entre 30 minutos y 3 horas.</p>
+        <div class="acciones">
+            <button type="submit">Reservar</button>
+            <a th:href="@{/reservas}">Volver a la lista</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

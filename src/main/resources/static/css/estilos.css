@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #f5f6f8;
+    color: #1f2933;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin: 0 0 16px;
+}
+
+a {
+    color: #1d4ed8;
+}
+
+.boton,
+button {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid #1d4ed8;
+    border-radius: 6px;
+    background: #1d4ed8;
+    color: #fff;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+td button {
+    background: #fff;
+    color: #b91c1c;
+    border-color: #b91c1c;
+}
+
+.aviso {
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid;
+}
+
+.exito {
+    background: #ecfdf5;
+    border-color: #6ee7b7;
+    color: #065f46;
+}
+
+.error {
+    background: #fef2f2;
+    border-color: #fca5a5;
+    color: #991b1b;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #d9dde3;
+}
+
+th,
+td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #eef1f5;
+    font-size: 0.85rem;
+}
+
+small {
+    color: #6b7280;
+}
+
+.estado {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #e5e7eb;
+}
+
+.estado.confirmada {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.estado.cancelada {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.formulario {
+    display: grid;
+    gap: 12px;
+    max-width: 480px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #d9dde3;
+    border-radius: 8px;
+}
+
+.formulario label {
+    display: grid;
+    gap: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.formulario input,
+.formulario select {
+    padding: 6px 8px;
+    border: 1px solid #c4cad3;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 400;
+}
+
+.campo-error {
+    color: #b91c1c;
+    font-weight: 400;
+    font-size: 0.85rem;
+}
+
+.ayuda,
+.vacio {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.acciones {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reservas de Laboratorios</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<main>
+    <h1>Reservas de Laboratorios</h1>
+
+    <p class="aviso exito" th:if="${mensaje}" th:text="${mensaje}"></p>
+    <p class="aviso error" th:if="${error}" th:text="${error}"></p>
+
+    <p><a class="boton" th:href="@{/reservas/nueva}">Nueva reserva</a></p>
+
+    <p class="vacio" th:if="${#lists.isEmpty(reservas)}">Todavía no hay reservas registradas.</p>
+
+    <table th:unless="${#lists.isEmpty(reservas)}">
+        <thead>
+        <tr><th>#</th><th>Laboratorio</th><th>Solicitante</th><th>Inicio</th><th>Fin</th><th>Motivo</th><th>Estado</th><th></th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="r : ${reservas}">
+            <td th:text="${r.id}"></td>
+            <td th:text="${r.laboratorio.nombre}"></td>
+            <td>
+                <span th:text="${r.nombreSolicitante}"></span><br>
+                <small th:text="${r.correoSolicitante}"></small>
+            </td>
+            <td th:text="${#temporals.format(r.inicio, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${#temporals.format(r.fin, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${r.motivo}"></td>
+            <td><span class="estado" th:classappend="${#strings.toLowerCase(r.estado)}" th:text="${r.estado}"></span></td>
+            <td>
+                <form th:if="${r.estado.name() != 'CANCELADA'}"
+                      th:action="@{/reservas/{id}/cancelar(id=${r.id})}" method="post">
+                    <button type="submit">Cancelar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
